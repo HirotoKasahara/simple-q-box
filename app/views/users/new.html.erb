@@ -1,0 +1,41 @@
+<header>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+      <a class="navbar-brand" href="/"><img src="/assets/soso.png" alt="" width="100" ></a>　　<%#画像表示%>
+          <span class="navbar-text">新規登録画面</span>           <%# 中央%>　　
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-Suppoted-content">
+          <span class="navbar-toggler-icon"></span>        
+        </button>
+      <div class="collapse navbar-collapse justify-content-end" id ="navbar-Suppoted-content">    
+        <ul class="navbar-nav">
+          <li class="nav-item"><a href="login" class="nav-link">ログイン</a></li>
+        </ul>
+      </div>
+    </nav>
+</header>
+<body>
+<h1 class="text-center"> 新規登録フォーム</h1>
+<div class="row">
+    <div class="col-sm-6 offset-sm-3">
+      <%= form_with(model: @user,local: true)do |f| %>
+        <%= render 'layouts/error_messages',model: f.object %>
+          <div class="form-group">
+            <%= f.label :name,'名前'%>
+            <%= f.text_field :name,class: 'form-control'%>
+          </div>
+          <div class="form-group">
+            <%= f.label :email,'メールアドレス'%>
+            <%= f.text_field :email,class: 'form-control'%>
+          </div>
+          <div class="form-group">
+            <%=f.label :password,'パスワード'%>
+            <%= f.text_field :password,class: 'form-control'%>
+          </div>
+          <div class="form-group">
+            <%= f.label :password_confirmation, '確認用パスワード' %>
+            <%= f.password_field :password_confirmation ,class: 'form-control' %>
+          </div>
+            <%= f.submit '登録',class: 'btn btn-primary btn-block' %>
+      <% end %>
+    </div>
+</div>
+</body>

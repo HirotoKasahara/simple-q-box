@@ -1,0 +1,31 @@
+<header>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+      <a class="navbar-brand" href="/"><img src="/assets/soso.png" alt="" width="100" ></a>　　<%#画像表示%>
+          <span class="navbar-text">トップページ</span>           <%# 中央%>　　
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-Suppoted-content">
+          <span class="navbar-toggler-icon"></span>        
+        </button>
+      <div class="collapse navbar-collapse justify-content-end" id ="navbar-Suppoted-content">    
+        <ul class="navbar-nav">
+          <li class="nav-item"><a href="/login" class="nav-link">ログイン</a></li>
+          <li class="nav-item"><a href="/signup" class="nav-link">新規登録</a></li>
+        </ul>
+      </div>
+    </nav>
+</header>
+<body>
+  <div class="text-center">
+    <h1>みんなの質問一覧</h1>
+  </div>
+    <div class="row">
+      <div class="col-sm-8 offset-sm-2">
+         <div class="overflow-auto" style="height:700px; width=:100px;">
+           <% @questions.each do|question|%>
+                <p class="text-success d-inline">投稿ユーザー:</p><p class="text-danger d-inline"><%= question.user.name %></p>
+                <p class="text-primary d-inline">質問投稿日:<%= question.created_at %></p>
+                <h3>・<%= link_to question.content, question_path(question) %></h3>
+           <% end %>
+        </div>
+     </div>
+   </div>
+</body>
