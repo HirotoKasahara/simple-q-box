@@ -9,6 +9,7 @@
       <div class="collapse navbar-collapse justify-content-end" id ="navbar-Suppoted-content">    
         <ul class="navbar-nav nav-fill w-100">
           <li class="nav-item "><p class="d-inline">ログイン中のユーザー:</p><h3 class="d-inline"><%= link_to current_user.name,user_path(current_user) %></h3></li>
+          <li class="nav-item"><h3 class="d-inline"><%= link_to "質問する",user_path(current_user) %></li></h3>
           <li class="nav-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
         </ul>
       </div>
