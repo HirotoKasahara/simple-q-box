@@ -1,6 +1,23 @@
 <header>
+  <% if logged_in? %>
+  <nav class="navbar navbar-expand-sm navbar-light bg-light">
+      <a class="navbar-brand" href="/"><img src="/assets/soso.png" alt="" width="100" ></a>　
+          <span class="navbar-text">トップページ</span>         
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-Suppoted-content">
+          <span class="navbar-toggler-icon"></span>        
+        </button>
+      <div class="collapse navbar-collapse justify-content-end" id ="navbar-Suppoted-content">    
+        <ul class="navbar-nav nav-fill w-100">
+          <li class="nav-item "><p class="d-inline">ログイン中のユーザー:</p><h3 class="d-inline"><%= link_to current_user.name,user_path(current_user) %></h3></li>
+          <li class="nav-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+        </ul>
+      </div>
+    </nav>
+      </div>
+    </nav>
+  <% else %>
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
-      <a class="navbar-brand" href="/"><img src="/assets/soso.png" alt="" width="100" ></a>　　<%#画像表示%>
+      <a class="navbar-brand" href="/"><img src="/assets/soso.png" alt="" width="80" ></a>　　<%#画像表示%>
           <span class="navbar-text">トップページ</span>           <%# 中央%>　　
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-Suppoted-content">
           <span class="navbar-toggler-icon"></span>        
@@ -12,6 +29,7 @@
         </ul>
       </div>
     </nav>
+    <% end %>
 </header>
 <body>
   <div class="text-center">
@@ -19,8 +37,8 @@
   </div>
     <div class="row">
       <div class="col-sm-8 offset-sm-2">
-         <div class="overflow-auto" style="height:700px; width=:100px;">
-           <% @questions.each do|question|%>
+         <div class="overflow-auto text-center" style="height:700px; width:800px;">
+           <% @questions.order(created_at: :desc).each do|question|%>
                 <p class="text-success d-inline">投稿ユーザー:</p><p class="text-danger d-inline"><%= question.user.name %></p>
                 <p class="text-primary d-inline">質問投稿日:<%= question.created_at %></p>
                 <h3>・<%= link_to question.content, question_path(question) %></h3>

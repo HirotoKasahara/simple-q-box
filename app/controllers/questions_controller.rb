@@ -1,10 +1,13 @@
 class QuestionsController < ApplicationController
+  before_action :requier_user_logged_in, only: [:new]
   def new
     @question = current_user.questions.build
   end
   def show
     @question = Question.find(params[:id])
     @answer = @question.answers.build
+    @answers = @question.answers
+
   end 
 
   def create
@@ -19,7 +22,11 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    
+    @question = Question.find(params[:id])
+   @question.destroy
+   
+    flash[:success]="削除しました"
+    redirect_to current_user
   end
   
   private
@@ -28,4 +35,5 @@ class QuestionsController < ApplicationController
     params.require(:question).permit(:content)
   end 
   
+   
 end 

@@ -1,14 +1,17 @@
 <header>
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
       <a class="navbar-brand" href="/"><img src="/assets/soso.png" alt="" width="100" ></a>　
-          <span class="navbar-text">マイページ</span>         
+          <span class="navbar-text">トップページ</span>         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-Suppoted-content">
           <span class="navbar-toggler-icon"></span>        
         </button>
       <div class="collapse navbar-collapse justify-content-end" id ="navbar-Suppoted-content">    
-        <ul class="navbar-nav">
+        <ul class="navbar-nav nav-fill w-100">
+          <li class="nav-item "><p class="d-inline">ログイン中のユーザー:</p><h3 class="d-inline"><%= link_to current_user.name,user_path(current_user) %></h3></li>
           <li class="nav-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
         </ul>
+      </div>
+    </nav>
       </div>
     </nav>
   
@@ -17,17 +20,19 @@
   <h1 class="text-center ">あなたの質問一覧</h1>
   <div class="row">
     <div class="col-sm-8 offset-sm-2 ">
-      <div class="overflow-auto" style="width:800px; height:600px;">
-      
-  　　　　<% @questions.each do |question|%>
-  　　　　　　<ul>
-          　<li><h3><%= question.content %></h3></li>
-          </ul>
-       <% end %>
-     </div>
+      <div class="overflow-auto text-center" style="height:700px; width:800px;">
+  　　<% @questions.order(created_at: :desc).each do|question| %>
+  　　<div>
+          <p class="text-success d-inline">質問投稿日:<%= question.created_at %><%= link_to "削除", question, method: :delete, class: 'btn btn-danger btn-sm' %></p>
+          <h3>・<%= link_to question.content, question_path(question) %></h3>
+      </div>
+        　
+        　<% end %>
+　　　　</div>
      </div>
   </div>
   <div class="text-center">
-    <h1><a href="<%= new_question_path %>">質問を投稿する</a></h1>
+    <h1><a class="text-danger"href="<%= new_question_path %>">質問を投稿する</a></h1>
     </div>
 </body>
+　　
