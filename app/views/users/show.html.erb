@@ -1,4 +1,4 @@
-<header>
+
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
       <a class="navbar-brand" href="/"><img src="/assets/soso.png" alt="" width="100" ></a>　
           <span class="navbar-text">マイページ</span>         
@@ -12,27 +12,26 @@
         </ul>
       </div>
     </nav>
-      </div>
-    </nav>
+   
   
-</header>
 
-<body>
+
+
   <h1 class="text-center ">あなたの質問一覧:質問数(<%= @questions.count %>)</h1>
   <div class="row">
     <div class="col-sm-8 offset-sm-2 bg-light text-center">
       <div class="overflow-auto " style="height:700px; width:800px;">
   　　<% @questions.order(created_at: :desc).each do|question| %>
-          <p class="text-success d-inline">質問投稿日:<%= question.created_at %>
+          <p class="text-success d-inline">質問投稿日:<%= question.created_at %></p>
           <p class="d-inline">閲覧数:<%= question.impressions_count %></p>
-          <%= link_to "削除", question, method: :delete,data: {confirm: "本当に削除しますか？"}, class: 'btn btn-danger btn-sm' %></p>
+          <%= link_to "削除", question, method: :delete,data: {confirm: "本当に削除しますか？"}, class: 'btn btn-danger btn-sm' %>
           <h3>・<%= link_to question.content, question_path(question) %></h3>
       <% end %>
 　　　　</div>
      </div>
   </div>
   <div class="text-center">
-    <h1><a class="text-danger"href="<%= new_question_path %>">質問を投稿する</a></h1>
+    <h1><a class="text-danger" href="<%= new_question_path %>">質問を投稿する</a></h1>
     </div>
-</body>
+
 　　

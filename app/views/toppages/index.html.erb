@@ -1,5 +1,4 @@
-
-  <% if logged_in? %>
+<% if logged_in? %>
   <nav class="navbar navbar-expand-sm navbar-light bg-light">
       <a class="navbar-brand" href="/"><img src="/assets/soso.png" alt="" width="100" ></a>　
           <span class="navbar-text">トップページ</span>         
@@ -9,62 +8,61 @@
       <div class="collapse navbar-collapse justify-content-end" id ="navbar-Suppoted-content">    
         <ul class="navbar-nav nav-fill w-100">
           <li class="nav-item "><p class="d-inline">ログイン中のユーザー:</p><h3 class="d-inline"><%= link_to current_user.name,user_path(current_user) %></h3></li>
-          <li class="nav-item"><h3 class="d-inline"><%= link_to "質問する",user_path(current_user) %></h3></li>
-          <li class="nav-item navbar-brand"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+          <li class="nav-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
         </ul>
-      </div>
-    </nav>
       </div>
     </nav>
   <% else %>
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
-      <a class="navbar-brand" href="/"><img src="/assets/soso.png" alt="" width="100" ></a>　
-          <span class="navbar-text">トップページ</span>         
+      <a class="navbar-brand" href="/"><img src="/assets/soso.png" alt="" width="80" ></a>　　<%#画像表示%>
+          <span class="navbar-text">トップページ</span>           <%# 中央%>　　
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-Suppoted-content">
           <span class="navbar-toggler-icon"></span>        
         </button>
       <div class="collapse navbar-collapse justify-content-end" id ="navbar-Suppoted-content">    
-        <ul class="navbar-nav nav-fill w-100">
-          <li class="nav-item navbar-brand"><%= link_to 'ログイン',login_path %></li>
-          <li class="nav-item navbar-brand"><%= link_to '新規登録',signup_path %></li>
+        <ul class="navbar-nav">
+          <li class="nav-item"><a href="/login" class="nav-link">ログイン</a></li>
+          <li class="nav-item"><a href="/signup" class="nav-link">新規登録</a></li>
         </ul>
-      </div>
-    </nav>
       </div>
     </nav>
     <% end %>
 
-<body>
-  
-  <div class="text-center">
-  </div>
+
     <div class="row">
       <div class="col-sm-6 bg-light">
         <h1 class="text-danger text-center">みんなの質問一覧</h1>
-         <div class="overflow-auto text-center" style="height:700px; width:800px;">
-           <% @questions.order(created_at: 'DESC').each do|question|%>
-                <p class="text-success d-inline">投稿ユーザー:</p><p class="text-danger d-inline"><%= question.user.name %></p>
+         <div class="overflow-auto " style="height:700px; width:550px;">
+           <% @questions.each do |question|%>
+           <ul>
+             <li>
+                <p class="text-success d-inline">投稿ユーザー:<%=question.user.name %></p>
                 <p class="text-primary d-inline">質問投稿日:<%= question.created_at %></p>
                 <p class="d-inline">閲覧数:<%= question.impressions_count %></p>
-                <h3>・<%= link_to question.content, question_path(question) %></h3>
-           <% end %>
+                <h3 class="text-danger"><%=link_to question.content,question_path(question) %></h3>
+          </li>
+          </ul>
+          <% end %>
         </div>
      </div>
+     
+     <div class="col-sm-6 bg-light">
+        <h1 class="text-danger text-center">閲覧数ランキング</h1>
+         <div class="overflow-auto " style="height:700px; width:550px;">
+           <% @questions.order(impressions_count: 'DESC').each do |question|%>
+           <ul>
+             <li>
+                <p class="text-success d-inline">投稿ユーザー:<%=question.user.name %></p>
+                <p class="text-primary d-inline">質問投稿日:<%= question.created_at %></p>
+                <p class="d-inline">閲覧数:<%= question.impressions_count %></p>
+                <h3 class="text-danger"><%=link_to question.content,question_path(question) %></h3>
+          </li>
+          </ul>
+          <% end %>
+        </div>
+     </div>
+     </div>
     
- 
-   
-     <div class="col-sm-6 bg-warning">
-       <h1 class="text-center">閲覧数ランキング</h1>
-       <div class="overflow-auto text-center" style="height:700px; width:800px;">
-     <% @questions.order(impressions_count: 'DESC').each do|rank_question|%>
-     <p class="text-success d-inline">投稿ユーザー:</p><p class="text-danger d-inline"><%= rank_question.user.name %></p>
-                <p class="text-primary d-inline">質問投稿日:<%= rank_question.created_at %></p>
-                <p class="d-inline">閲覧数:<%= rank_question.impressions_count %></p>
-                <h3>・<%= link_to rank_question.content, question_path(rank_question) %></h3>
-     <% end %>
-     </div>
-     </div>
-  
-   </div>
-   <h1 class="text-center text-danger">質問するにはログインが必要です</h1>
-</body>
+   <h1 class="text-center text-danger">質問するには<%= link_to 'ログイン',login_path %>が必要です</h1>
+
+
