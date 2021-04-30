@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   end
   def show
     @questions = current_user.questions
+    
   end 
 
   def create

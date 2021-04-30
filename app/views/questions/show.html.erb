@@ -39,6 +39,7 @@
       <div class="col-sm-8 offset-2 text-center">
         <h2 class="text-primary text-center d-inline"><%= @question.content %></h2>
         <p class="d-inline text-success">(投稿ユーザー：<%= @question.user.name %>)</p>
+        <p class="d-inline">閲覧数:<%= @question.impressions_count %></p>
       </div>
     </div>
     
@@ -55,6 +56,7 @@
         <% end %>
      </div>
    </div>
+   
     
     
     <div class="row">

@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @answer = @question.answers.build
     @answers = @question.answers
-
+    impressionist(@question, nil)
   end 
 
   def create
