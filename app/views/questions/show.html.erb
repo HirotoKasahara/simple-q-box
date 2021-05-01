@@ -1,56 +1,21 @@
-<header>
-  <% if logged_in? %>
-  <nav class="navbar navbar-expand-sm navbar-light bg-light">
-      <a class="navbar-brand" href="/"><img src="/assets/soso.png" alt="" width="100" ></a>　
-          <span class="navbar-text">質問詳細ページ</span>         
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-Suppoted-content">
-          <span class="navbar-toggler-icon"></span>        
-        </button>
-      <div class="collapse navbar-collapse justify-content-end" id ="navbar-Suppoted-content">    
-        <ul class="navbar-nav nav-fill w-100">
-          <li class="nav-item "><p class="d-inline">ログイン中のユーザー:</p><h3 class="d-inline"><%= link_to current_user.name,user_path(current_user) %></h3></li>
-          <li class="nav-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
-        </ul>
-      </div>
-    </nav>
-      </div>
-    </nav>
-  <% else %>
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
-      <a class="navbar-brand" href="/"><img src="/assets/soso.png" alt="" width="80" ></a>　　<%#画像表示%>
-          <span class="navbar-text">質問詳細ページ</span>           <%# 中央%>　　
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-Suppoted-content">
-          <span class="navbar-toggler-icon"></span>        
-        </button>
-      <div class="collapse navbar-collapse justify-content-end" id ="navbar-Suppoted-content">    
-        <ul class="navbar-nav">
-          <li class="nav-item"><a href="/login" class="nav-link">ログイン</a></li>
-          <li class="nav-item"><a href="/signup" class="nav-link">新規登録</a></li>
-        </ul>
-      </div>
-    </nav>
-    <% end %>
-</header>
-
-
-<body>
-    <h1 class="text-center">質問</h1>
-    <div class="row">
-      <div class="col-sm-8 offset-2 text-center">
-        <h2 class="text-primary text-center d-inline"><%= @question.content %></h2>
-        <p class="d-inline text-success">(投稿ユーザー：<%= @question.user.name %>)</p>
-        <p class="d-inline">閲覧数:<%= @question.impressions_count %></p>
-      </div>
-    </div>
+<div class="row mt-2"> 
+  <div class="col-sm-8 offset-2 text-center bg-light"> 
+    <h2 class="d-inline">質問:</h2><%= simple_format(@question.content) %>
+    <p class="d-inline text-success"><i class="fas fa-user"></i><%= @question.user.name %></p> 
+    <p class="d-inline">閲覧数:<%= @question.impressions_count %></p> 
+  </div> 
+</div>
     
     
     <div class="row">
-      <div class="col-sm-8 offset-sm-2 overflow-auto "style="width:400px; height:400px;">
+      <div class="col-sm-8 offset-sm-2 overflow-auto bg-light"style="width:400px; height:400px;">
         <% @answers.order(created_at: :desc).each do |answer|%>
         <ul>
           <li>
-            <h3 class="d-inline"><%= answer.content %></h3>
-            <p class="d-inline text-success text-right"><%= answer.created_at %></p>
+            <p class="d-inline"><i class="fas fa-user"></i><%= answer.name %></p>
+            <p class="d-inline text-success"><i class="fas fa-calendar-alt"></i><%= answer.created_at %></p>
+            <h3 class="d-inline"><%= simple_format(answer.content) %></h3>
+            
           </li>
           </ul>
         <% end %>
@@ -59,15 +24,16 @@
    
     
     
-    <div class="row">
+    <div class="row mt-2">
       <div class="col-sm-6 offset-sm-3" >
         <%= form_with(model: @answer, local: true) do |f| %>
         <%= render 'layouts/error_messages',model: @answer %>
           <%= hidden_field_tag :question_id, @question.id %>
+          <%= f.text_field :name, :value => "名無し"%>
           <%= f.text_area :content,class: 'form-control',rows: 3 %>
           <div class="text-right text-danger"><p>文字数制限:255字</p></div>
           <%= f.submit '投稿',class: 'btn btn-primary btn-block'%>
         <% end %>
       </div>
     </div>
-</body>
+   

@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
     @answers = @question.answers
     impressionist(@question, nil)
   end 
-
+  
   def create
     @question = current_user.questions.build(question_params)
     if @question.save
@@ -28,7 +28,14 @@ class QuestionsController < ApplicationController
     flash[:success]="削除しました"
     redirect_to current_user
   end
-  
+  def search
+    if params[:content].present?
+      @questions = Question.where('content LIKE ?',"%#{params[:content]}%")
+    else
+      @questions = Question.none
+    end 
+  end 
+
   private
   
   def question_params

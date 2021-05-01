@@ -7,6 +7,10 @@ Rails.application.routes.draw do
  
  get 'signup',to: 'users#new'
  resources :users,only: [:create,:show]
- resources :questions,only: [:new,:create,:destroy,:show]
+ resources :questions,only: [:new,:create,:destroy,:show] do
+   get :search , on: :collection
+  end 
  resources :answers,only: [:create,:destroy]
+ 
+ 
 end

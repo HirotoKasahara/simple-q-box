@@ -1,17 +1,5 @@
 
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
-      <a class="navbar-brand" href="/"><img src="/assets/soso.png" alt="" width="100" ></a>　　<%#画像表示%>
-          <span class="navbar-text">新規登録画面</span>           <%# 中央%>　　
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-Suppoted-content">
-          <span class="navbar-toggler-icon"></span>        
-        </button>
-      <div class="collapse navbar-collapse justify-content-end" id ="navbar-Suppoted-content">    
-        <ul class="navbar-nav">
-          <li class="nav-item"><a href="login" class="nav-link">ログイン</a></li>
-        </ul>
-      </div>
-    </nav>
-
+    
 
 <h1 class="text-center"> 新規登録フォーム</h1>
 <div class="row">
@@ -28,7 +16,7 @@
           </div>
           <div class="form-group">
             <%=f.label :password,'パスワード'%>
-            <%= f.text_field :password,class: 'form-control'%>
+            <%= f.password_field :password,class: 'form-control'%>
           </div>
           <div class="form-group">
             <%= f.label :password_confirmation, '確認用パスワード' %>
