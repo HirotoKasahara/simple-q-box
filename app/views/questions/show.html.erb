@@ -8,13 +8,13 @@
     
     
     <div class="row">
-      <div class="col-sm-8 offset-sm-2 overflow-auto bg-light"style="width:400px; height:400px;">
+      <div class="col-sm-8 offset-sm-2 overflow-auto bg-light" style="width:400px; height:400px;">
         <% @answers.order(created_at: :desc).each do |answer|%>
         <ul>
           <li>
             <p class="d-inline"><i class="fas fa-user"></i><%= answer.name %></p>
             <p class="d-inline text-success"><i class="fas fa-calendar-alt"></i><%= answer.created_at %></p>
-            <h3 class="d-inline"><%= simple_format(answer.content) %></h3>
+            <%= simple_format(answer.content) %>
             
           </li>
           </ul>

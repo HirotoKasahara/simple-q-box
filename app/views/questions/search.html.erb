@@ -9,10 +9,10 @@
       <table class="table tbale-striped ">
   <thead>
     <tr class="bg-dark text-white">
-      <th><h3>質問</h3></th>
-      <th><h3><i class="fas fa-calendar-alt"></i></h3></th>
-      <th><h3><i class="fas fa-user"></h3></th>
-      <th><h3><i class="fas fa-eye"></h3></th>
+      <th>質問</th>
+      <th>投稿日</th>
+      <th>ユーザー名</th>
+      <th>閲覧数</th>
     </tr>
   </thead>
   <tbody>
@@ -20,8 +20,8 @@
       <tr class="bg-light">
         <td><%= link_to simple_format(questions.content),question_path(questions) %></td>
         <td><%= questions.created_at %></td>
-        <td><h3><%= questions.user.name%></h3></td>
-        <td><h3><%= questions.impressions_count%></h3></td>
+        <td><%= questions.user.name%></td>
+        <td><%= questions.impressions_count%></td>
       </tr>
     <% end %>
   </tbody>
