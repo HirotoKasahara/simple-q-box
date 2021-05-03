@@ -2,12 +2,12 @@
   <div class="row">
     <div class="col-sm-8 offset-sm-2 bg-light text-center">
       <h1 class="text-center ">あなたの質問一覧:質問数(<%= @questions.count %>)</h1>
-      <div class="overflow-auto " style="height:700px; width:800px;">
+      <div class="overflow-auto " style="height:700px; width:700px;">
   　　<% @questions.order(created_at: :desc).each do|question| %>
           <p class="text-success d-inline"><i class="fas fa-calendar-alt"></i><%= question.created_at %></p>
           <p class="d-inline"><i class="fas fa-eye"></i><%= question.impressions_count %></p>
           <%= link_to "削除", question, method: :delete,data: {confirm: "本当に削除しますか？"}, class: 'btn btn-danger btn-sm' %>
-         <%= link_to simple_format(question.content), question_path(question) %>
+         <div class="sa text-center"><%= link_to simple_format(question.content), question_path(question) %></div>
       <% end %>
 　　　　</div>
      </div>

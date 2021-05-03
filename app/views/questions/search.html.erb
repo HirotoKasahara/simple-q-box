@@ -18,7 +18,7 @@
   <tbody>
     <% @questions.each do |questions| %>
       <tr class="bg-light">
-        <td><%= link_to simple_format(questions.content),question_path(questions) %></td>
+      <td> <div class="iiii"><%= link_to simple_format(questions.content),question_path(questions) %></div></td>
         <td><%= questions.created_at %></td>
         <td><%= questions.user.name%></td>
         <td><%= questions.impressions_count%></td>

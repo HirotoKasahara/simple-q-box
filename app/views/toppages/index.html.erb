@@ -9,7 +9,7 @@
                 <p class="text-success d-inline"><i class="fas fa-user"></i><%=question.user.name %></p>
                 <p class="text-primary d-inline"><i class="fas fa-calendar-alt"></i><%= question.created_at %></p>
                 <p class="d-inline"><i class="fas fa-eye"></i><%= question.impressions_count %></p>
-                <%=link_to simple_format(question.content),question_path(question) %>
+                <div class="kikikiki"><%=link_to simple_format(question.content),question_path(question) %></div>
             </li>
           </ul>
           <% end %>
@@ -19,15 +19,28 @@
      <div class="col-sm-6 bg-light">
         <h1 class="text-danger text-center">閲覧数ランキング</h1>
          <div class="overflow-auto " style="height:700px; width:550px;">
-           <% @questions.order(impressions_count: 'DESC').each do |question|%>
-           <ul>
-             <li>
-                <p class="text-success d-inline"><i class="fas fa-user"></i><%=question.user.name %></p>
+           <% @questions.each.with_index(1) do |question,i|%>
+                <% if i==1 %>
+                 <p class="d-inline text-warning">1</p><i class="fas fa-crown"></i><p class="text-success d-inline"><i class="fas fa-user"></i><%=question.user.name %></p>
                 <p class="text-primary d-inline"><i class="fas fa-calendar-alt"></i><%= question.created_at %></p>
                 <p class="d-inline"><i class="fas fa-eye"></i><%= question.impressions_count %></p>
-                <%=link_to simple_format(question.content),question_path(question) %>
-          </li>
-          </ul>
+                <div class="kekekeke"><%=link_to simple_format(question.content),question_path(question) %></div>
+                <% elsif i==2 %>
+                <p class="d-inline text-danger">2</p><i class="fas fa-crown"></i><p class="text-success d-inline"><i class="fas fa-user"></i><%=question.user.name %></p>
+                <p class="text-primary d-inline"><i class="fas fa-calendar-alt"></i><%= question.created_at %></p>
+                <p class="d-inline"><i class="fas fa-eye"></i><%= question.impressions_count %></p>
+                <div class="kekekeke"><%=link_to simple_format(question.content),question_path(question) %></div>
+                <% elsif i==3%>
+                 <p class="d-inline text-primary">3</p> <i class="fas fa-crown"></i><p class="text-success d-inline"><i class="fas fa-user"></i><%=question.user.name %></p>
+                <p class="text-primary d-inline"><i class="fas fa-calendar-alt"></i><%= question.created_at %></p>
+                <p class="d-inline"><i class="fas fa-eye"></i><%= question.impressions_count %></p>
+                <div class="kekekeke"><%=link_to simple_format(question.content),question_path(question) %></div>
+                <% else %>
+                <%= i %><p class="text-success d-inline"><i class="fas fa-user"></i><%=question.user.name %></p>
+                <p class="text-primary d-inline"><i class="fas fa-calendar-alt"></i><%= question.created_at %></p>
+                <p class="d-inline"><i class="fas fa-eye"></i><%= question.impressions_count %></p>
+                <div class="kekekeke"><%=link_to simple_format(question.content),question_path(question) %></div>
+                <% end %>
           <% end %>
         </div>
      </div>

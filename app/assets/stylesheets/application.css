@@ -1,6 +1,41 @@
+
 body{
     background-color:silver;
    }
 header{
     width:100%;
+}
+.oooo{
+    width: 700px;
+  background: white;
+  word-wrap: break-word;
+}
+.eeee{
+    width: 700px;
+  background: white;
+   word-wrap: break-word;
+}
+.iiii{
+    width: 400px;
+  padding: 5px;
+  background: white;
+  word-wrap: break-word;
+}
+.kikikiki{
+      width: 400px;
+  padding: 5px;
+  background: white;
+  word-wrap: break-word;
+}
+.kekekeke{
+      width: 400px;
+  padding: 5px;
+  background: white;
+  word-wrap: break-word;
+}
+.sa{
+     width: 680px;
+  padding: 5px;
+  background: white;
+  word-wrap: break-word;
 }

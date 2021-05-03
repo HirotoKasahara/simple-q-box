@@ -1,8 +1,8 @@
 class NotificationMailer < ApplicationMailer
-   default from: 'no-replay@gmail.com'
+   default from: 'ookiioimo@gmail.com'
 
-  def complete_mail(user)
-    @user = user
+  def complete_mail
+    @user = params[:user]
     mail(subject: "COMPLETE join your address" ,to: @user.email)
   end
 end
