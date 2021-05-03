@@ -19,7 +19,7 @@
      <div class="col-sm-6 bg-light">
         <h1 class="text-danger text-center">閲覧数ランキング</h1>
          <div class="overflow-auto " style="height:700px; width:550px;">
-           <% @questions.each.with_index(1) do |question,i|%>
+           <% @rank_questions.each.with_index(1) do |question,i|%>
                 <% if i==1 %>
                  <p class="d-inline text-warning">1</p><i class="fas fa-crown"></i><p class="text-success d-inline"><i class="fas fa-user"></i><%=question.user.name %></p>
                 <p class="text-primary d-inline"><i class="fas fa-calendar-alt"></i><%= question.created_at %></p>
