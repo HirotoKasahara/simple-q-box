@@ -1,6 +1,19 @@
-Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
+  Rails.application.configure do
+  Rails.application.configure do
+  #--- 中略 ---#
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    port:                 587,
+    address:              'smtp.gmail.com',
+    domain:               'gmail.com',
+    user_name:            'ookiioimo@gmail.com',
+    password:             'bfmtuldqadixjjuq',
+    authentication:       'login',
+    enable_starttls_auto: true
+  }
+end
   # Code is not reloaded between requests.
   config.cache_classes = true
 

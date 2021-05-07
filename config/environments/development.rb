@@ -1,4 +1,4 @@
-Rails.application.configure do
+  Rails.application.configure do
   Rails.application.configure do
   #--- 中略 ---#
   config.action_mailer.raise_delivery_errors = true
