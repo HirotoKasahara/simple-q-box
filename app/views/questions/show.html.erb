@@ -3,12 +3,11 @@
   <div class=" col-sm-8 offset-2 text-center bg-light"> 
    <p class="d-inline text-success"><i class="fas fa-user"></i><%= @question.user.name %></p> 
     <p class="d-inline"><i class="fas fa-eye"></i><%= @question.impressions_count %></p> 
-    <h2 class="d-inline text-primary">質問</h2><div class="oooo"><%= simple_format(@question.content) %></div>
+    <div class="oooo"><%= simple_format(@question.content) %></div>
   </div> 
 </div>
     <div class="row">
       <div class="col-sm-8 offset-sm-2 bg-light text-center">
-        <h3 class="text-center text-warning">回答</h3>
       <div class="overflow-auto" style="height:500px; width:700px;">
         <% @answers.order(created_at: :desc).each do |answer|%>
         <div class="eeee">

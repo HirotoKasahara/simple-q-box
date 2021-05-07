@@ -11,6 +11,6 @@ Rails.application.routes.draw do
    get :search , on: :collection
   end 
  resources :answers,only: [:create,:destroy]
- 
+ resources :password_resets,only: [:new,:create,:edit,:update]
  
 end

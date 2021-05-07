@@ -28,11 +28,13 @@ class QuestionsController < ApplicationController
     flash[:success]="削除しました"
     redirect_to current_user
   end
+  
   def search
     if params[:content].present?
-      @questions = Question.where('content LIKE ?',"%#{params[:content]}%")
+     @questions = Question.where('content LIKE ?',"%#{params[:content]}%")
     else
-      @questions = Question.none
+      @questions =Question.all
+    
     end 
   end 
 
@@ -41,6 +43,4 @@ class QuestionsController < ApplicationController
   def question_params
     params.require(:question).permit(:content)
   end 
-  
-   
 end 
