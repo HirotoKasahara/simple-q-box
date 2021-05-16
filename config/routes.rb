@@ -10,7 +10,8 @@ Rails.application.routes.draw do
  resources :questions,only: [:new,:create,:destroy,:show] do
    get :search , on: :collection
   end 
- resources :answers,only: [:create,:destroy]
+  resources :answers,only: [:create,:destroy]
  resources :password_resets,only: [:new,:create,:edit,:update]
  
+resources :cakes,only: [:create,:show]
 end

@@ -1,11 +1,14 @@
 class UsersController < ApplicationController
-  	before_action :requier_user_logged_in, only: [:show]
+  
   def new
     @user = User.new
   end
   def show
-    @questions = current_user.questions
-    
+    @user = User.find(params[:id])
+    @questions = @user.questions
+    @sleep = @user.cakes.build
+
+   @todays_sleep = @user.cakes.last(2)[0]
   end 
 
   def create

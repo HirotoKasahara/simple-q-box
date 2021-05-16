@@ -1,0 +1,27 @@
+<div class="sesese">
+<div class="overflow-auto " style="height:700px; width:1640px;">
+<table class="table table-warning">
+    <thead>
+        <tr>
+            <th>投稿日</th>
+            <th>睡眠時間</th>
+            <th>試したこと</th>
+            <th>感想</th>
+            <th>気づき</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @sleeps.order(created_at: 'DESC').each do|sleep| %>
+        <tr>
+            <td><div class="aaaaa"><%= sleep.created_at.to_s(:datetime_jp) %></div></td>
+            <td><div class="aaaaa"><%= sleep.time %></div></td>
+            <td><div class="aaaaa"><%= sleep.try %></div></td>
+            <td><div class="aaaaa"></div><%= sleep.impression %></div></td>
+            <td><div class="aaaaa"><%= sleep.content %></div></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+</div>
+</div>
+平均睡眠時間<%= @sleep_time %>時間

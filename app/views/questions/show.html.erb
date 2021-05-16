@@ -1,18 +1,18 @@
 
 <div class="row mt-2"> 
   <div class=" col-sm-8 offset-2 text-center bg-light"> 
-   <p class="d-inline text-success"><i class="fas fa-user"></i><%= @question.user.name %></p> 
+   <p class="d-inline text-success"><i class="fas fa-user"></i><%= link_to @question.user.name,user_path(@question.user) %></p> 
     <p class="d-inline"><i class="fas fa-eye"></i><%= @question.impressions_count %></p> 
     <div class="oooo"><%= simple_format(@question.content) %></div>
   </div> 
 </div>
     <div class="row">
       <div class="col-sm-8 offset-sm-2 bg-light text-center">
-      <div class="overflow-auto" style="height:500px; width:700px;">
+      <div class="overflow-auto" style="height:500px; width:1300px;">
         <% @answers.order(created_at: :desc).each do |answer|%>
-        <div class="eeee">
+        <div class="nenene">
             <p class="d-inline"><i class="fas fa-user"></i><%= answer.name %></p>
-            <p class="d-inline text-success"><i class="fas fa-calendar-alt"></i><%= answer.created_at %></p>
+            <p class="d-inline text-success"><i class="fas fa-calendar-alt"></i><%= answer.created_at.to_s(:datetime_jp) %></p>
             <%= simple_format(answer.content) %>
             </div>
         <% end %>
@@ -29,7 +29,7 @@
           <%= hidden_field_tag :question_id, @question.id %>
           <%= f.text_field :name, :value => "名無し"%>
           <%= f.text_area :content,class: 'form-control',rows: 3 %>
-          <div class="text-right text-danger"><p>文字数制限:255字</p></div>
+          <div class="text-right text-warning"><p>文字数制限:255字</p></div>
           <%= f.submit '投稿',class: 'btn btn-primary btn-block'%>
         <% end %>
       </div>

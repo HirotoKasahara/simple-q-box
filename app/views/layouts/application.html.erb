@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Simple-q-box</title>
+    <title>suimin-Q&A</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -29,6 +29,8 @@
       <div class="collapse navbar-collapse justify-content-end" id ="navbar-Suppoted-content">    
         <ul class="navbar-nav nav-fill w-100">
           <li class="nav-item "><p class="d-inline">ログイン中のユーザー:</p><h3 class="d-inline"><%= link_to current_user.name,user_path(current_user) %></h3></li>
+          <li class="nav-item"><h3><%= link_to'睡眠記録',cake_path(current_user)%></h3></li>
+          <li class="nav-item"><h3><%= link_to '質問する',new_question_path %></h3></li>
         <li class="nav-item"><h3><%= link_to '質問検索' ,search_questions_path %></li>
         <li class="nav-item"><h3><%= link_to 'ログアウト', logout_path, method: :delete %></h3></li>
         </ul>
@@ -49,12 +51,13 @@
       </div>
     </nav>
     <h1 class="text-center text-danger">質問するには<%= link_to 'ログイン',login_path %>が必要です</h1>
+    <h1 class="text-center text-warning">みんなで睡眠を改善しよう!</h1>
     <% end %>
     </header>
-    <div class="container">
+  
       <%= render 'layouts/flash_messages' %>
     
       <%= yield %>
-   </div>
+ 
   </body>
 </html>

@@ -1,17 +1,26 @@
 
 body{
-    background-color:silver;
-   }
+    background-image: url(umi.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+     position: relative;
+     
+}
 header{
     width:100%;
+      opacity: 0.9;
+}
+.sesese{
+    padding:0;
+    margin:20px ;
 }
 .oooo{
-    width: 700px;
+    width: 1100px;
   background: white;
   word-wrap: break-word;
 }
 .eeee{
-    width: 700px;
+    width: 550px;
   background: white;
    word-wrap: break-word;
 }
@@ -22,19 +31,52 @@ header{
   word-wrap: break-word;
 }
 .kikikiki{
-      width: 400px;
+      width: 700px;
   padding: 5px;
   background: white;
   word-wrap: break-word;
 }
 .kekekeke{
-      width: 400px;
+      width: 700px;
   padding: 5px;
   background: white;
   word-wrap: break-word;
 }
 .sa{
-     width: 680px;
+     width: 550px;
+  padding: 5px;
+  background: white;
+  word-wrap: break-word;
+}
+.aaaaa{
+     width: 300px;
+  padding: 5px;
+  word-wrap: break-word;
+}
+.eee{
+     word-wrap: break-word;
+}
+.aa{
+    margin-left:60px;
+}
+.ii{
+    margin-right:50px;
+}
+.mypage{
+    width:1680px;
+}
+.karasu{
+    float:right;
+   
+}
+.sonson{
+    width: 880px;
+  padding: 5px;
+  background: white;
+  word-wrap: break-word;
+}
+.nenene{
+    width: 1100px;
   padding: 5px;
   background: white;
   word-wrap: break-word;

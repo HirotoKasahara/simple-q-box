@@ -26,7 +26,7 @@ class QuestionsController < ApplicationController
    @question.destroy
    
     flash[:success]="削除しました"
-    redirect_to current_user
+    redirect_to root_url
   end
   
   def search
