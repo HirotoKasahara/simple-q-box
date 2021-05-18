@@ -1,4 +1,4 @@
-<% if current_user.id == @user.id %>
+<% if logged_in? %>
 <div class="mypage">
   <div class="row">
       <div class="aa col-sm-6 bg-light ">
@@ -27,7 +27,7 @@
       </div>
       
       <div class="ii col-sm-4 offset-sm-1 bg-light text-centr">
-        <h1 class="eeee text-center ">自分の質問一覧:質問数(<%= @questions.count %>)</h1>
+        <h1 class="eeee text-center "><%= @user.name %>の質問一覧:質問数(<%= @questions.count %>)</h1>
           <div class="overflow-auto bg-light" style="height:700px; width:550px;">
     　　<% @questions.order(created_at: :desc).each do|question| %>
             <p class="text-secondary d-inline"><i class="fas fa-calendar-alt"></i><%= question.created_at.to_s(:datetime_jp) %></p>
@@ -39,8 +39,8 @@
   　　</div>
   </div>
 </div>
-
 <% else %>
+
 <div class="col-sm-6 offset-3">
         <h1 class="eeee text-center "><%= @user.name %>の質問一覧:質問数(<%= @questions.count %>)</h1>
           <div class="overflow-auto bg-light" style="height:700px; width:900px;">
@@ -52,5 +52,5 @@
         <% end %>
   　　　　</div>
   　　</div>
-<% end %>
-　　
+
+　　<% end %>
