@@ -1,0 +1,13 @@
+<%= form_with(model: @sleep,local: true)do|f|%>
+  <%= f.label :time, '睡眠時間' %>
+  <%= f.text_field :time %>
+  <%= f.label :try, '試したことジ' %>
+  <%= f.text_field :try %>
+  <%= f.label :impression, '感想' %>
+  <%= f.text_field :impression %>
+  <%= f.label :content, '気づき' %>
+  <%= f.text_field :content %>
+  
+  <%= f.submit '更新' %>
+<% end %>
+<%= link_to '睡眠記録に戻る',cakes_path(@current_user)%>

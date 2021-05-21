@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   resources :answers,only: [:create,:destroy]
  resources :password_resets,only: [:new,:create,:edit,:update]
  
-resources :cakes,only: [:create,:show]
+resources :cakes,only: [:create,:show,:edit,:update]
 end

@@ -3,11 +3,11 @@ class CakesController < ApplicationController
       @user = current_user
     @sleep = current_user.cakes.build(cakes_params)
     if @sleep.save
-      flash[:success]="saveしました"
+      flash[:success]="投稿しました"
       redirect_to cake_path(@user)
     else
-      flash[:danger]="できませんでした"
-      redirect_to root_path
+      flash[:danger]="投稿できませんでした"
+      redirect_to root_url
     end 
   end
   
@@ -17,10 +17,27 @@ class CakesController < ApplicationController
    @sleeps.each do|sleep|
      @sleep_time = i += sleep.time / @sleeps.count
    end 
+   def edit
+     @sleep = Cake.find(params[:id])
+   end 
+   
+   
+   def update
+     @sleep = Cake.find(params[:id])
+     
+     if @sleep.save(cakes_params)
+       flash[:success]="編集しました"
+       redirect_to cake_path(current_user)
+     else
+       flash.now[:danger]="編集できませんでした"
+       render :edit
+     end 
+   end 
   
   end 
   private
   def cakes_params
     params.require(:cake).permit(:time,:try,:impression,:content)
   end 
+ 
 end

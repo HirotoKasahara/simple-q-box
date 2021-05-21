@@ -1,4 +1,5 @@
 <div class="sesese">
+    <div class="text-danger bg-light d-inline">今月の平均睡眠時間<%= @sleep_time %>時間</div>
 <div class="overflow-auto " style="height:700px; width:1640px;">
 <table class="table table-warning">
     <thead>
@@ -8,6 +9,7 @@
             <th>試したこと</th>
             <th>感想</th>
             <th>気づき</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -18,10 +20,10 @@
             <td><div class="aaaaa"><%= sleep.try %></div></td>
             <td><div class="aaaaa"></div><%= sleep.impression %></div></td>
             <td><div class="aaaaa"><%= sleep.content %></div></td>
+            <td><div class="btn btn-light"><%= link_to '編集',edit_cake_path(sleep)%></div></td>
         </tr>
         <% end %>
     </tbody>
 </table>
 </div>
 </div>
-平均睡眠時間<%= @sleep_time %>時間

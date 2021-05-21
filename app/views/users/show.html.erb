@@ -4,9 +4,10 @@
       <div class="aa col-sm-6 bg-light ">
  　　　　　<table class="table table-warning">
 　　　　　　<%= form_with(model: @sleep,local: true)do|f|%>
+　　　　　　<%= render 'layouts/error_messages',model: f.object %>
    　　　 <thead>
         <tr>
-            <th>睡眠時間</th>
+            <th>睡眠時間（半角数字)</th>
             <th>試したこと</th>
             <th>感想</th>
             <th>気づき</th>
