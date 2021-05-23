@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @questions = @user.questions
     @sleep = @user.cakes.build
-   @m = current_user.mokuhyous.last
+   
  
    @todays_sleep = @user.cakes.last(2)[0]
   
