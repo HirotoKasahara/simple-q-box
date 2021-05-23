@@ -7,6 +7,7 @@
   <%= f.text_field :impression %>
   <%= f.label :content, '気づき' %>
   <%= f.text_field :content %>
+  <%= hidden_field_tag :question_id,current_user.id %>
   
   <%= f.submit '更新' %>
 <% end %>

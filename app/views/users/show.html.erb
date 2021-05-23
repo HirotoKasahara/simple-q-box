@@ -24,8 +24,37 @@
 　　　</table>
 　　　<div class="karasu"><%= f.submit '投稿',class: 'btn btn-primary'%></div>
 　　　 <% end %>
-　　　　　<div>本日の睡眠時間<%= @todays_sleep.time %>時間</div>
+
+　　　     <div class="sososososo">
+　　　<table class="table table-warning">
+　　　    <h1 class="d-inline bg-white">最新の睡眠記録</h1>
+   　　　 <thead>
+        <tr>
+            <th>睡眠時間</th>
+            <th>試したこと</th>
+            <th>感想</th>
+            <th>気づき</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><%= @todays_sleep.time %></td>
+            <td><%= @todays_sleep.try %></td>
+            <td><%= @todays_sleep.impression %></td>
+            <td><%= @todays_sleep.content %></td>
+        </tr>
+    </tbody>
+    </table>
+　　　　</div>
+　　　　<div class="mokuhyou">
+　　　　    <h1 class="d-inline bg-white">今月の目標</h1>
+　　　　    <h2 class="mokuhyou-2 text-warning">
+　　　　        <%=@m.content%>
+　　　　    </h2>
+　　　　</div>
+　　　　<%= link_to '今月の目標を設定する',new_mokuhyou_path %>
       </div>
+     
       
       <div class="ii col-sm-4 offset-sm-1 bg-light text-centr">
         <h1 class="eeee text-center "><%= @user.name %>の質問一覧:質問数(<%= @questions.count %>)</h1>

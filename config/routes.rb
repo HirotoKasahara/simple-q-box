@@ -14,4 +14,5 @@ Rails.application.routes.draw do
  resources :password_resets,only: [:new,:create,:edit,:update]
  
 resources :cakes,only: [:create,:show,:edit,:update]
+resources :mokuhyous,only: [:new,:create,:edit,:update]
 end

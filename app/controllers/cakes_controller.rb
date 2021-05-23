@@ -6,8 +6,8 @@ class CakesController < ApplicationController
       flash[:success]="投稿しました"
       redirect_to cake_path(@user)
     else
-      flash[:danger]="投稿できませんでした"
-      redirect_to root_url
+      flash[:danger]="投稿できませんでした:投稿は１日一回までです。"
+      redirect_to user_path(@user)
     end 
   end
   
@@ -23,9 +23,10 @@ class CakesController < ApplicationController
    
    
    def update
-     @sleep = Cake.find(params[:id])
+       @user = User.find_by(params[:question_id])
+     @sleep = @user.cakes.find(params[:id])
      
-     if @sleep.save(cakes_params)
+     if @sleep.update(cakes_params)
        flash[:success]="編集しました"
        redirect_to cake_path(current_user)
      else

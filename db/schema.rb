@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_18_142626) do
+ActiveRecord::Schema.define(version: 2021_05_23_045436) do
 
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -58,6 +58,14 @@ ActiveRecord::Schema.define(version: 2021_05_18_142626) do
     t.index ["user_id"], name: "index_impressions_on_user_id"
   end
 
+  create_table "mokuhyous", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "content"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_mokuhyous_on_user_id"
+  end
+
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
     t.bigint "user_id"
@@ -77,5 +85,6 @@ ActiveRecord::Schema.define(version: 2021_05_18_142626) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "cakes", "users"
+  add_foreign_key "mokuhyous", "users"
   add_foreign_key "questions", "users"
 end
