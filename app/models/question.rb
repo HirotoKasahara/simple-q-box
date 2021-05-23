@@ -1,5 +1,7 @@
 class Question < ApplicationRecord
-  belongs_to :user
+   is_impressionable counter_cache: true
   
+  belongs_to :user
+   
   has_many :answers
 end
