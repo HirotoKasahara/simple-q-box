@@ -53,4 +53,4 @@ production:
   pool: 5
   database: simple-q-box_production
   username: simple-q-box
-  password: <%= ENV['SIMPLE-Q-BOX_DATABASE_PASSWORD'] 
+  password: <%= ENV['SIMPLE-Q-BOX_DATABASE_PASSWORD'] %>
