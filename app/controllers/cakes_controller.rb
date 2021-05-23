@@ -23,8 +23,8 @@ class CakesController < ApplicationController
    
    
    def update
-       @user = User.find_by(params[:question_id])
-     @sleep = @user.cakes.find(params[:id])
+       
+     @sleep = current_user.cakes.find(params[:id])
      
      if @sleep.update(cakes_params)
        flash[:success]="編集しました"
