@@ -30,6 +30,12 @@ header{
   background: white;
   word-wrap: break-word;
 }
+.todays_sleep{
+     width: 170px;
+  padding: 5px;
+ word-wrap: break-word;
+
+}
 .kikikiki{
       width: 700px;
   padding: 5px;
